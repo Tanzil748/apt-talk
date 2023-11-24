@@ -7,7 +7,7 @@ const RightBar = () => {
     <div className="flex-1 m-2.5">
       <div className="sticky top-20">
         {/* message card */}
-        <div className="bg-white mb-4 rounded-md p-3 h-[80vh] overflow-y-auto">
+        <div className="bg-white mb-4 rounded-md p-3 h-[80vh] overflow-y-auto no-scrollbar">
           <p className="font-semibold text-sm">Online Friends</p>
           {/* REFACTOR LATER */}
           <div className="flex gap-4 items-center my-2">

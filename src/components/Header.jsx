@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="navbar bg-base-100 sticky top-0 z-10">
+    <div className="navbar bg-base-100 sticky top-0 z-20">
       <div className="flex-1 gap-x-2">
         {/* logo */}
         <Link to={"/"} className="btn btn-ghost text-xl">
@@ -27,7 +27,7 @@ const Header = () => {
 
       <div className="flex-none gap-2">
         {/* Alert btn */}
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle hidden sm:block">
           <div
             className="indicator relative tooltip tooltip-bottom"
             data-tip="Alerts"
@@ -70,23 +70,37 @@ const Header = () => {
             <div className="w-10 rounded-full flex">
               <img alt="User profile icon" src={defaultUser} className="w-40" />
             </div>
-            <span>Tanzil Hassan</span>
+            <span className="text-xs sm:text-sm">Tanzil Hassan</span>
           </label>
           <ul
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="#" className="justify-between">
-                Profile
-                <span className="badge bg-red-500 text-white">New</span>
-              </a>
+              <Link to={`/user-profile/:id`}>
+                <div className="justify-between">
+                  Profile
+                  <span className="badge bg-red-500 text-white">New</span>
+                </div>
+              </Link>
             </li>
             <li>
-              <a href="#">Bookmarks</a>
+              <Link to={"#"} className="hidden">
+                Bookmarks
+              </Link>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <Link to={"/login"}>Login</Link>
+            </li>
+
+            <li>
+              <Link to={"/register"}>Register</Link>
+            </li>
+
+            <li>
+              <Link to={"#"} className="hidden">
+                Logout
+              </Link>
             </li>
           </ul>
         </div>

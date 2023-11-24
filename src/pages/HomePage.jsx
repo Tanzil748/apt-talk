@@ -5,7 +5,7 @@ import RightBar from "../components/RightBar";
 
 const HomePage = () => {
   return (
-    <div className="flex 2xl:container mx-auto bg-[#f6f3f3]">
+    <div className="flex 2xl:container mx-auto">
       {/* left bar - profile, nav links, other communities */}
       <LeftBar />
       {/* main content - user stories, add post, all posts */}
