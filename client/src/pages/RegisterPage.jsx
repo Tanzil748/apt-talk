@@ -65,7 +65,7 @@ const RegisterPage = () => {
 
         {/* submission btn */}
         <button className="rounded-md font-semibold text-sm px-2 py-4 bg-blue-500 hover:bg-blue-600 duration-200 text-white w-full">
-          Log In
+          Register
         </button>
         <p className="text-xs flex justify-center items-center mt-4">
           Already have an account?

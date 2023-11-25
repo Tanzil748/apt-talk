@@ -1,0 +1,6 @@
+{
+  "short_name": "AptTalk",
+  "name": "AptTalk Mock Website",
+  "start_url": ".",
+  "display": "standalone"
+}
