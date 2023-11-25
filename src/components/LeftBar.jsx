@@ -17,7 +17,7 @@ import {
 
 const LeftBar = () => {
   return (
-    <div className="flex-1 m-2.5">
+    <div className="w-1/4 m-2.5 hidden md:block">
       <div className="sticky top-20">
         {/* profile card */}
         <div className="bg-white rounded-md mb-4 p-4">
@@ -30,10 +30,10 @@ const LeftBar = () => {
                 className="w-10 h-10 rounded-full object-cover"
               />
               <div>
-                <p className="text-sm font-semibold">
+                <p className="text-xs lg:text-sm font-semibold">
                   Tanzil Hassan{" "}
                   <span>
-                    <CheckCircle style={{ fontSize: "small", color: "blue" }} />
+                    <CheckCircle style={{ fontSize: "8px", color: "blue" }} />
                   </span>
                 </p>
                 <p className="text-xs font-light text-slate-500">@tanzil333</p>

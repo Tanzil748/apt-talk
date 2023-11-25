@@ -13,7 +13,7 @@ import LoginPage from "./pages/LoginPage";
 import UserProfilePage from "./pages/UserProfilePage";
 
 const App = () => {
-  const currentUser = false;
+  const currentUser = true;
 
   const RootLayout = () => {
     return (

@@ -4,7 +4,7 @@ import profileImg from "../assets/profile.jpg";
 
 const RightBar = () => {
   return (
-    <div className="flex-1 m-2.5">
+    <div className="w-1/4 m-2.5 hidden lg:block">
       <div className="sticky top-20">
         {/* message card */}
         <div className="bg-white mb-4 rounded-md p-3 h-[80vh] overflow-y-auto no-scrollbar">

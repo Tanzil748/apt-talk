@@ -32,7 +32,7 @@ const MainContent = () => {
     },
   ];
   return (
-    <div className="flex-[3_3_0%] mt-4 mb-2.5 mx-2.5">
+    <div className="flex-1 mt-4 mb-2.5 mx-2.5 overflow-x-hidden">
       <Stories />
       <AddPostForm />
       {fakeData.map((post) => (

@@ -5,9 +5,76 @@ import { AddCircle } from "@mui/icons-material";
 const Stories = () => {
   const [clicked, setClicked] = useState(true);
 
+  // include profile img & actual story later on
+  const fakeStoryData = [
+    {
+      username: "Bob ",
+    },
+    {
+      username: "John",
+    },
+    {
+      username: "Rob ",
+    },
+    {
+      username: "Manuel",
+    },
+    {
+      username: "Man",
+    },
+    {
+      username: "Rob ",
+    },
+    {
+      username: "James",
+    },
+    {
+      username: "Bob ",
+    },
+    {
+      username: "John",
+    },
+    {
+      username: "Rob ",
+    },
+    {
+      username: "Manuel",
+    },
+    {
+      username: "Man",
+    },
+    {
+      username: "Rob ",
+    },
+    {
+      username: "James",
+    },
+    {
+      username: "Bob ",
+    },
+    {
+      username: "John",
+    },
+    {
+      username: "Rob ",
+    },
+    {
+      username: "Manuel",
+    },
+    {
+      username: "Man",
+    },
+    {
+      username: "Rob ",
+    },
+    {
+      username: "James",
+    },
+  ];
+
   useEffect(() => {}, [clicked]);
   return (
-    <div className="bg-white rounded-md h-20 overflow-x-auto overflow-y-hidden no-scrollbar flex items-center p-2 gap-2">
+    <div className="bg-white rounded-md h-20 overflow-x-scroll overflow-y-hidden no-scrollbar flex items-center px-2 gap-4">
       {/* add story */}
       <div className="flex flex-col flex-none justify-center items-center gap-1 w-14 h-14 relative">
         <img
@@ -27,134 +94,21 @@ const Stories = () => {
         </button>
       </div>
       {/* friends stories */}
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
-      <button className="flex flex-col flex-none justify-center items-center gap-1">
-        <img
-          src={profileImg}
-          alt="logged user story"
-          className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
-        />
-        <p className="text-[.6rem] text-slate-600">Tanzil Hassan</p>
-      </button>
+      {fakeStoryData.map((story, i) => (
+        <button
+          className="flex flex-col flex-none justify-center items-center gap-1"
+          key={i}
+        >
+          <img
+            src={profileImg}
+            alt="logged user story"
+            className="w-14 h-14 object-cover rounded-full border-4 border-double border-blue-500"
+          />
+          <p className="text-[.6rem] text-slate-600 text-ellipsis">
+            {story.username}
+          </p>
+        </button>
+      ))}
     </div>
   );
 };
