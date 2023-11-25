@@ -77,11 +77,9 @@ const Header = () => {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to={`/user-profile/:id`}>
-                <div className="justify-between">
-                  Profile
-                  <span className="badge bg-red-500 text-white">New</span>
-                </div>
+              <Link to={`/user-profile/:id`} className="flex justify-between">
+                <div>Profile</div>
+                <span className="badge bg-red-500 text-white">New</span>
               </Link>
             </li>
             <li>
