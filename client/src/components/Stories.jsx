@@ -74,7 +74,7 @@ const Stories = () => {
 
   useEffect(() => {}, [clicked]);
   return (
-    <div className="bg-white rounded-md h-20 overflow-x-scroll overflow-y-hidden no-scrollbar flex items-center px-2 gap-4">
+    <div className="bg-white rounded-md h-20 overflow-x-scroll overflow-y-hidden no-scrollbar flex items-center px-2 gap-4 mt-4">
       {/* add story */}
       <div className="flex flex-col flex-none justify-center items-center gap-1 w-14 h-14 relative">
         <img

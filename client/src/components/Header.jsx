@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import defaultUser from "../assets/defaultUser.svg";
 import { ApartmentRounded, Search, BookmarkBorder } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Header = () => {
+  const { loggedUser, logout } = useContext(AuthContext);
+
   return (
     <div className="navbar bg-base-100 sticky top-0 z-20">
       <div className="flex-1 gap-x-2">
@@ -64,42 +67,50 @@ const Header = () => {
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
-            className="btn btn-ghost btn-circle avatar flex py-2 flex-nowrap w-fit tooltip tooltip-bottom"
-            data-tip="My Account"
+            className="btn btn-ghost btn-circle avatar flex py-2 flex-nowrap w-fit"
           >
             <div className="w-10 rounded-full flex">
               <img alt="User profile icon" src={defaultUser} className="w-40" />
             </div>
-            <span className="text-xs sm:text-sm">Tanzil Hassan</span>
+            {/* wrote conditional here to prevent alignment issue w/ ghost circle */}
+            {loggedUser !== null ? (
+              <span className="text-xs sm:text-sm">
+                {loggedUser?.others.username}
+              </span>
+            ) : null}
           </label>
           <ul
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
-            <li>
-              <Link to={`/user-profile/:id`} className="flex justify-between">
-                <div>Profile</div>
-                <span className="badge bg-red-500 text-white">New</span>
-              </Link>
-            </li>
-            <li>
-              <Link to={"#"} className="hidden">
-                Bookmarks
-              </Link>
-            </li>
-            <li>
-              <Link to={"/login"}>Login</Link>
-            </li>
+            {loggedUser !== null ? (
+              <>
+                <li>
+                  <Link
+                    to={`/user-profile/:id`}
+                    className="flex justify-between"
+                  >
+                    <div>Profile</div>
+                    <span className="badge bg-red-500 text-white">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"/login"} onClick={() => logout()}>
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to={"/login"}>Login</Link>
+                </li>
 
-            <li>
-              <Link to={"/register"}>Register</Link>
-            </li>
-
-            <li>
-              <Link to={"#"} className="hidden">
-                Logout
-              </Link>
-            </li>
+                <li>
+                  <Link to={"/register"}>Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

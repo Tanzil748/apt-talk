@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,9 +11,14 @@ import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import UserProfilePage from "./pages/UserProfilePage";
+import AuthContext from "./context/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+// Create a client
+const queryClient = new QueryClient();
 
 const App = () => {
-  const currentUser = true;
+  const { loggedUser } = useContext(AuthContext);
 
   const RootLayout = () => {
     return (
@@ -26,7 +31,7 @@ const App = () => {
   };
 
   const ProtectedRoute = ({ children }) => {
-    if (!currentUser) {
+    if (!loggedUser) {
       return <Navigate to="/login" />;
     }
 
@@ -61,7 +66,11 @@ const App = () => {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 };
 
 export default App;

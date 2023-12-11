@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import profileBackdrop from "../assets/profileBackdrop.jpg";
 import profileImg from "../assets/profile.jpg";
 import UserPost from "../components/UserPost";
+import AuthContext from "../context/AuthContext";
 
 const UserProfilePage = () => {
+  const { loggedUser } = useContext(AuthContext);
   const fakeUserPost = [
     {
       id: 1,
@@ -45,7 +47,9 @@ const UserProfilePage = () => {
         {/* content */}
         <div className="flex flex-col lg:flex-row justify-between items-center">
           <div className="ml-0 lg:ml-72 mt-14 lg:mt-4 flex flex-col items-center lg:items-start">
-            <p className="text-4xl font-semibold">Tanzil Hassan</p>
+            <p className="text-4xl font-semibold">
+              {loggedUser?.others.username}
+            </p>
             <p className="text-base font-medium text-slate-500">163 Friends</p>
           </div>
           <button className="bg-blue-500 hover:bg-blue-600 duration-200 px-2 py-1 mt-4 lg:mt-0 text-white rounded-sm">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import profileImg from "../assets/profile.jpg";
 import {
   Home,
@@ -14,49 +14,56 @@ import {
   Twitter,
   CheckCircle,
 } from "@mui/icons-material";
+import AuthContext from "../context/AuthContext";
 
 const LeftBar = () => {
+  const { loggedUser } = useContext(AuthContext);
+
   return (
     <div className="w-1/4 m-2.5 hidden md:block">
       <div className="sticky top-20">
         {/* profile card */}
-        <div className="bg-white rounded-md mb-4 p-4">
-          <div className="bg-neutral-100 rounded-md">
-            {/* row 1 */}
-            <div className="flex items-center gap-2 p-2">
-              <img
-                src={profileImg}
-                alt="TEMPORARY"
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <div>
-                <p className="text-xs lg:text-sm font-semibold">
-                  Tanzil Hassan{" "}
-                  <span>
-                    <CheckCircle style={{ fontSize: "8px", color: "blue" }} />
-                  </span>
-                </p>
-                <p className="text-xs font-light text-slate-500">@tanzil333</p>
+        {loggedUser ? (
+          <div className="bg-white rounded-md mb-4 p-4">
+            <div className="bg-neutral-100 rounded-md">
+              {/* row 1 */}
+              <div className="flex items-center gap-2 p-2">
+                <img
+                  src={profileImg}
+                  alt="TEMPORARY"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div>
+                  <p className="text-xs lg:text-sm font-semibold">
+                    {loggedUser?.others.username}{" "}
+                    <span>
+                      <CheckCircle style={{ fontSize: "8px", color: "blue" }} />
+                    </span>
+                  </p>
+                  <p className="text-xs font-light text-slate-500">
+                    @{loggedUser?.others.username}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            {/* row 2 */}
-            <div className="flex justify-between p-2">
-              <div className="flex flex-col items-center justify-center">
-                <p className="font-bold">2.3k</p>
-                <p className="text-xs text-slate-500">Follower</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <p className="font-bold">235</p>
-                <p className="text-xs text-slate-500">Following</p>
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <p className="font-bold">80</p>
-                <p className="text-xs text-slate-500">Post</p>
+              {/* row 2 */}
+              <div className="flex justify-between p-2">
+                <div className="flex flex-col items-center justify-center">
+                  <p className="font-bold">2.3k</p>
+                  <p className="text-xs text-slate-500">Follower</p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p className="font-bold">235</p>
+                  <p className="text-xs text-slate-500">Following</p>
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <p className="font-bold">80</p>
+                  <p className="text-xs text-slate-500">Post</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : null}
 
         {/* page links & pages you like */}
         <div className="bg-white rounded-md p-4 text-slate-600">

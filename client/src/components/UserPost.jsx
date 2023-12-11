@@ -23,18 +23,20 @@ const UserPost = ({ post }) => {
           />
           <div>
             <p className="text-sm font-semibold">{post.username}</p>
-            <p className="text-xs text-slate-500">Posted by @handle</p>
+            <p className="text-xs text-slate-500">Posted by @{post.username}</p>
           </div>
         </Link>
 
         {/* content row */}
         <div>
-          <p className="text-sm">{post?.text}</p>
-          <img
-            src={post.picture}
-            alt={`${post.username} post`}
-            className="w-full h-72 object-cover rounded-md mt-2"
-          />
+          <p className="text-sm">{post?.postcontent}</p>
+          {post?.picture ? (
+            <img
+              src={post?.picture}
+              alt={`${post.username} post`}
+              className="w-full h-72 object-cover rounded-md mt-2"
+            />
+          ) : null}
         </div>
 
         <hr className="my-3" />

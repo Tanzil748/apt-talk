@@ -1,201 +1,205 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Event } from "@mui/icons-material";
 import profileImg from "../assets/profile.jpg";
+import AuthContext from "../context/AuthContext";
 
 const RightBar = () => {
+  const { loggedUser } = useContext(AuthContext);
   return (
     <div className="w-1/4 m-2.5 hidden lg:block">
       <div className="sticky top-20">
         {/* message card */}
-        <div className="bg-white mb-4 rounded-md p-3 h-[80vh] overflow-y-auto no-scrollbar">
-          <p className="font-semibold text-sm">Online Friends</p>
-          {/* REFACTOR LATER */}
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+        {loggedUser ? (
+          <div className="bg-white mb-4 rounded-md p-3 h-[80vh] overflow-y-auto no-scrollbar">
+            <p className="font-semibold text-sm">Online Friends</p>
+            {/* REFACTOR LATER */}
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          {/* -------------- DELETE AFTER THIS */}
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            {/* -------------- DELETE AFTER THIS */}
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
-          </div>
-          <div className="flex gap-4 items-center my-2">
-            <div className="avatar online">
-              <div className="w-9 rounded-full">
-                <img src={profileImg} alt="temp" />
+            <div className="flex gap-4 items-center my-2">
+              <div className="avatar online">
+                <div className="w-9 rounded-full">
+                  <img src={profileImg} alt="temp" />
+                </div>
               </div>
+              <p className="text-sm font-semibold">Tanzil Hassan</p>
             </div>
-            <p className="text-sm font-semibold">Tanzil Hassan</p>
           </div>
-        </div>
+        ) : null}
 
         {/* events card */}
         <div className="bg-white rounded-md">
