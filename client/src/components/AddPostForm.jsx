@@ -24,7 +24,8 @@ const AddPostForm = () => {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
 
-  const handleFileClick = () => {
+  const handleFileClick = (e) => {
+    e.preventDefault(); //this prevents bug where form auto-submitted when clicking file
     fileInputRef.current.click();
   };
 
@@ -41,15 +42,29 @@ const AddPostForm = () => {
     },
   });
 
+  // upload image function
+  const upload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await apiRequests.post("/upload", formData);
+      return res.data.imageUrl;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
-    // let picUrl = "";
-    // if (file) {
-    //   picUrl = await upload();
-    // }
-    // mutation.mutate({ title, postContent, picture: picUrl });
-    addPostMutation.mutate({ postContent: text }); //text from the useState hook
+    if (!text) return; // edge-case for empty post
+
+    let picUrl = "";
+    if (file) {
+      picUrl = await upload();
+    }
+    addPostMutation.mutate({ postContent: text, picture: picUrl }); //text from the useState hook
     setText("");
+    setFile(null);
   };
   return (
     <div className="bg-white my-4 rounded-md">
@@ -76,6 +91,18 @@ const AddPostForm = () => {
             Share Post
           </button>
         </div>
+
+        {/* only appears if file is added */}
+        {file && (
+          <div className="flex items-center gap-2 px-2">
+            <span className="text-sm text-slate-500">1 file uploaded:</span>
+            <img
+              alt="user inputted file"
+              src={URL.createObjectURL(file)}
+              className="h-7 object-contain"
+            ></img>
+          </div>
+        )}
 
         <hr className="my-2" />
 

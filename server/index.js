@@ -2,9 +2,9 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import multer from "multer";
 const app = express();
 const port = process.env.PORT || 4500;
+import { upload } from "./middleware/multer.js";
 import { authRouter } from "./routes/authentication.js";
 import { postRouter } from "./routes/posts.js";
 // import { commentRouter } from "./routes/comments.js";
@@ -16,6 +16,8 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
+
+// CHANGE LATER FOR DEPLOYMENT
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -24,22 +26,14 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "../frontend/public/upload");
-//   },
-//   filename: function (req, file, cb) {
-//     const fileExtension = file.originalname.split(".").pop();
-//     cb(null, Date.now() + file.fieldname + "." + fileExtension);
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-
-// app.post("/upload", upload.single("file"), (req, res) => {
-//   const file = req.file;
-//   res.status(200).json(file.filename);
-// });
+// upload image endpoint
+app.post("/upload", upload.single("file"), (req, res) => {
+  const file = req.file;
+  // Access the file URL from the Cloudinary response
+  const imageUrl = file.path;
+  // Return the file URL to the client
+  res.status(200).json({ imageUrl });
+});
 
 // routes
 app.use("/auth", authRouter);
