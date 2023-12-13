@@ -10,7 +10,7 @@ const Comments = ({ postId }) => {
   const [commentContent, setCommentContent] = useState("");
 
   const { isLoading, data } = useQuery({
-    queryKey: ["comments"],
+    queryKey: ["comments", postId],
     queryFn: () =>
       apiRequests.get("/comment?postId=" + postId).then((res) => res.data),
   });

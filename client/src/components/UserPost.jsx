@@ -12,6 +12,13 @@ const UserPost = ({ post }) => {
 
   const [openComment, setOpenComment] = useState(false);
 
+  // accessing commentData from Comments.jsx to get # of comments per post
+  const { data: commentData } = useQuery({
+    queryKey: ["comments", post.id],
+    queryFn: () =>
+      apiRequests.get("/comment?postId=" + post.id).then((res) => res.data),
+  });
+
   // bookmark query functionality
   const { data } = useQuery({
     queryKey: ["bookmarks", post.id],
@@ -104,11 +111,17 @@ const UserPost = ({ post }) => {
             onClick={() => setOpenComment(!openComment)}
           >
             <Comment style={{ fontSize: "large" }} />
-            <span className="ml-1">Comments</span>
+            {/* <span className="ml-1">Comments</span> */}
+            <span className="ml-1">
+              {commentData && commentData.length !== undefined
+                ? commentData.length
+                : null}{" "}
+              Comments
+            </span>
           </button>
           <button className="text-xs text-slate-500">
             <Share style={{ fontSize: "large" }} />
-            <span className="ml-1">Shares</span>
+            <span className="ml-1">0 Shares</span>
           </button>
         </div>
         {openComment && <Comments key={post.id} postId={post.id} />}
