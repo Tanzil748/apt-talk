@@ -8,7 +8,7 @@ import { upload } from "./middleware/multer.js";
 import { authRouter } from "./routes/authentication.js";
 import { postRouter } from "./routes/posts.js";
 import { commentRouter } from "./routes/comments.js";
-// import { bookmarkRouter } from "./routes/bookmark.js";
+import { bookmarkRouter } from "./routes/bookmark.js";
 // import { followRouter } from "./routes/follows.js";
 
 // middleware
@@ -39,7 +39,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 app.use("/auth", authRouter);
 app.use("/post", postRouter);
 app.use("/comment", commentRouter);
-// app.use("/bookmark", bookmarkRouter);
+app.use("/bookmark", bookmarkRouter);
 // app.use("/follow", followRouter);
 
 app.listen(port, () => {

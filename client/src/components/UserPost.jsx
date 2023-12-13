@@ -1,12 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import profileImg from "../assets/profile.jpg";
 import { TurnedInNot, TurnedIn, Comment, Share } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
+import { apiRequests } from "../axiosReq";
+import { useQueryClient, useMutation, useQuery } from "@tanstack/react-query";
+import AuthContext from "../context/AuthContext";
 
 const UserPost = ({ post }) => {
-  const bookmarked = false;
+  const { loggedUser } = useContext(AuthContext);
+
   const [openComment, setOpenComment] = useState(false);
+
+  // bookmark query functionality
+  const { data } = useQuery({
+    queryKey: ["bookmarks", post.id],
+    queryFn: () =>
+      apiRequests.get("/bookmark?postId=" + post.id).then((res) => res.data),
+  });
+
+  const queryClient = useQueryClient();
+
+  const bookmarkMutation = useMutation({
+    mutationFn: (bookmarked) => {
+      if (bookmarked) {
+        return apiRequests.delete("/bookmark?postId=" + post.id);
+      } else {
+        return apiRequests.post("/bookmark", { postId: post.id });
+      }
+    },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["bookmarks"] });
+    },
+  });
+
+  const bookmarkHandler = () => {
+    bookmarkMutation.mutate(data.includes(loggedUser.others.id));
+  };
 
   return (
     <div>
@@ -44,23 +75,40 @@ const UserPost = ({ post }) => {
         {/* user reaction row - bookmark/comments/share */}
         <div className="flex gap-3">
           <button className="text-xs text-slate-500">
-            {!bookmarked ? (
-              <TurnedInNot style={{ fontSize: "large" }} />
+            {data && data.includes(loggedUser?.others.id) ? (
+              <div>
+                <TurnedIn
+                  style={{ fontSize: "large" }}
+                  onClick={bookmarkHandler}
+                />
+                <span className="ml-1">
+                  {data && data.length !== undefined ? data.length : null}{" "}
+                  Bookmark
+                </span>
+              </div>
             ) : (
-              <TurnedIn style={{ fontSize: "large" }} />
+              <div>
+                <TurnedInNot
+                  style={{ fontSize: "large" }}
+                  onClick={bookmarkHandler}
+                />
+                <span className="ml-1">
+                  {data && data.length !== undefined ? data.length : null}{" "}
+                  Bookmark
+                </span>
+              </div>
             )}
-            <span className="ml-1">10 Bookmarks</span>
           </button>
           <button
             className="text-xs text-slate-500"
             onClick={() => setOpenComment(!openComment)}
           >
             <Comment style={{ fontSize: "large" }} />
-            <span className="ml-1">8 Comments</span>
+            <span className="ml-1">Comments</span>
           </button>
           <button className="text-xs text-slate-500">
             <Share style={{ fontSize: "large" }} />
-            <span className="ml-1">5 Shares</span>
+            <span className="ml-1">Shares</span>
           </button>
         </div>
         {openComment && <Comments key={post.id} postId={post.id} />}
