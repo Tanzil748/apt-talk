@@ -63,7 +63,7 @@ const UserPost = ({ post }) => {
             <span className="ml-1">5 Shares</span>
           </button>
         </div>
-        {openComment && <Comments key={post.id} />}
+        {openComment && <Comments key={post.id} postId={post.id} />}
       </div>
     </div>
   );
