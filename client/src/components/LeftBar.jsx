@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import profileImg from "../assets/profile.jpg";
 import {
   Home,
   PeopleAlt,
@@ -29,7 +28,7 @@ const LeftBar = () => {
               {/* row 1 */}
               <div className="flex items-center gap-2 p-2">
                 <img
-                  src={profileImg}
+                  src={loggedUser?.others.profilepic}
                   alt="TEMPORARY"
                   className="w-10 h-10 rounded-full object-cover"
                 />

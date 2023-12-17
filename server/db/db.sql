@@ -1,12 +1,12 @@
-CREATE DATABASE aptTalk; -- I created database
+CREATE DATABASE updated_apttalk; -- I created database
 
 -- User table
 CREATE TABLE users(
     id BIGSERIAL NOT NULL PRIMARY KEY,
-    userName VARCHAR(15) NOT NULL,
+    userName VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
     userPassword VARCHAR(200) NOT NULL,
-    profilePic VARCHAR(300),
+    profilePic VARCHAR(500) DEFAULT 'https://cdn.iconscout.com/icon/free/png-512/free-profile-9175670-7513097.png?f=webp&w=512',
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

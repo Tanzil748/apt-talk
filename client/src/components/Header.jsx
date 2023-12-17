@@ -87,7 +87,7 @@ const Header = () => {
               <>
                 <li>
                   <Link
-                    to={`/user-profile/:id`}
+                    to={`/user-profile/${loggedUser.others.id}`}
                     className="flex justify-between"
                   >
                     <div>Profile</div>

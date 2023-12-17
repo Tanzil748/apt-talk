@@ -43,27 +43,36 @@ const UserPost = ({ post }) => {
   });
 
   const bookmarkHandler = () => {
-    bookmarkMutation.mutate(data.includes(loggedUser.others.id));
+    if (loggedUser) {
+      bookmarkMutation.mutate(data.includes(loggedUser.others.id));
+    } else {
+      // this prevents an error from being thrown for unauthenticated user
+      console.error("User needs to be authenticated to bookmark!");
+    }
   };
 
   return (
     <div>
       <div key={post.id} className="bg-white p-2 my-4 rounded-md">
         {/* top row */}
-        <Link
-          to={`/user-profile/${post.userId}`}
-          className="flex gap-2 mb-2 cursor-pointer w-fit"
-        >
-          <img
-            src={profileImg}
-            alt="temp"
-            className="w-10 h-10 object-cover rounded-full"
-          />
-          <div>
-            <p className="text-sm font-semibold">{post.username}</p>
-            <p className="text-xs text-slate-500">Posted by @{post.username}</p>
-          </div>
-        </Link>
+        <div>
+          <Link
+            to={`/user-profile/${post.postauthorid}`}
+            className="flex gap-2 mb-2 cursor-pointer w-fit"
+          >
+            <img
+              src={profileImg}
+              alt="temp"
+              className="w-10 h-10 object-cover rounded-full"
+            />
+            <div>
+              <p className="text-sm font-semibold">{post.username}</p>
+              <p className="text-xs text-slate-500">
+                Posted by @{post.username}
+              </p>
+            </div>
+          </Link>
+        </div>
 
         {/* content row */}
         <div>

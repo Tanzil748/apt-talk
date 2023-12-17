@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import profileImg from "../assets/profile.jpg";
 import { AddCircle } from "@mui/icons-material";
+import AuthContext from "../context/AuthContext";
 
 const Stories = () => {
+  const { loggedUser } = useContext(AuthContext);
   const [clicked, setClicked] = useState(true);
 
   // include profile img & actual story later on
@@ -78,7 +80,7 @@ const Stories = () => {
       {/* add story */}
       <div className="flex flex-col flex-none justify-center items-center gap-1 w-14 h-14 relative">
         <img
-          src={profileImg}
+          src={loggedUser?.others.profilepic}
           alt="logged user story"
           className="w-full h-full object-cover rounded-full border-4 border-double border-blue-500"
         />
