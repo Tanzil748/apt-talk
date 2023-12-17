@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import defaultUser from "../assets/defaultUser.svg";
 import {
   Home,
   PeopleAlt,
@@ -28,7 +29,8 @@ const LeftBar = () => {
               {/* row 1 */}
               <div className="flex items-center gap-2 p-2">
                 <img
-                  src={loggedUser?.others.profilepic}
+                  src={defaultUser}
+                  // src={loggedUser?.others.profilepic}
                   alt="TEMPORARY"
                   className="w-10 h-10 rounded-full object-cover"
                 />

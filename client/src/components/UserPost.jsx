@@ -1,6 +1,14 @@
 import React, { useState, useContext } from "react";
 import profileImg from "../assets/profile.jpg";
-import { TurnedInNot, TurnedIn, Comment, Share } from "@mui/icons-material";
+import defaultUser from "../assets/defaultUser.svg";
+import {
+  TurnedInNot,
+  TurnedIn,
+  Comment,
+  Share,
+  LinearScale,
+  Cancel,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
 import { apiRequests } from "../axiosReq";
@@ -10,6 +18,7 @@ import AuthContext from "../context/AuthContext";
 const UserPost = ({ post }) => {
   const { loggedUser } = useContext(AuthContext);
 
+  const [postAction, setPostAction] = useState(false);
   const [openComment, setOpenComment] = useState(false);
 
   // accessing commentData from Comments.jsx to get # of comments per post
@@ -51,27 +60,82 @@ const UserPost = ({ post }) => {
     }
   };
 
+  // delete post functionality
+  const deleteMutation = useMutation({
+    mutationFn: (postId) => {
+      return apiRequests.delete("/post/" + postId);
+    },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
+  });
+
+  const deleteHandler = () => {
+    deleteMutation.mutate(post.id);
+  };
+
   return (
     <div>
       <div key={post.id} className="bg-white p-2 my-4 rounded-md">
         {/* top row */}
-        <div>
+        <div className="flex justify-between items-center">
           <Link
             to={`/user-profile/${post.postauthorid}`}
             className="flex gap-2 mb-2 cursor-pointer w-fit"
           >
-            <img
-              src={profileImg}
-              alt="temp"
-              className="w-10 h-10 object-cover rounded-full"
-            />
-            <div>
-              <p className="text-sm font-semibold">{post.username}</p>
-              <p className="text-xs text-slate-500">
-                Posted by @{post.username}
-              </p>
-            </div>
+            {post.postauthorid === loggedUser?.others.id ? (
+              <>
+                <img
+                  src={defaultUser}
+                  alt="temp"
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+                <div>
+                  <p className="text-sm font-semibold">{post.username}</p>
+                  <p className="text-xs text-slate-500">
+                    Posted by @{post.username}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <img
+                  src={profileImg}
+                  alt="temp"
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+                <div>
+                  <p className="text-sm font-semibold">{post.username}</p>
+                  <p className="text-xs text-slate-500">
+                    Posted by @{post.username}
+                  </p>
+                </div>
+              </>
+            )}
           </Link>
+
+          {/* menu btn */}
+          {postAction && post.postauthorid === loggedUser?.others.id ? (
+            <div className="cursor-pointer">
+              <button
+                className="mr-1 bg-red-500 text-white px-2 py-1 rounded-sm hover:bg-red-600 duration-200"
+                onClick={deleteHandler}
+              >
+                Delete
+              </button>
+              <Cancel
+                onClick={() => setPostAction(!postAction)}
+                style={{ fontSize: "large" }}
+              />
+            </div>
+          ) : (
+            <LinearScale
+              style={{ fontSize: "large" }}
+              className="cursor-pointer"
+              onClick={() => setPostAction(!postAction)}
+            />
+          )}
         </div>
 
         {/* content row */}
@@ -120,7 +184,6 @@ const UserPost = ({ post }) => {
             onClick={() => setOpenComment(!openComment)}
           >
             <Comment style={{ fontSize: "large" }} />
-            {/* <span className="ml-1">Comments</span> */}
             <span className="ml-1">
               {commentData && commentData.length !== undefined
                 ? commentData.length

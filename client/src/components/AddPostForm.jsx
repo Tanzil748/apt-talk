@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import profileImg from "../assets/profile.jpg";
+import defaultUser from "../assets/defaultUser.svg";
 import {
   PhotoSizeSelectLarge,
   InsertLink,
@@ -72,8 +72,8 @@ const AddPostForm = () => {
         {/* upper row */}
         <div className="flex gap-2 items-center p-2">
           <img
-            src={profileImg}
-            alt="temp logged user"
+            src={defaultUser}
+            alt="logged user"
             className="w-10 h-10 object-cover rounded-full self-start"
           />
           <textarea

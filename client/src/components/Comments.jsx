@@ -43,7 +43,7 @@ const Comments = ({ postId }) => {
       {loggedUser ? (
         <form className="flex gap-2 mb-2" onSubmit={submitHandler}>
           <img
-            src={profileImg}
+            src={defaultUser}
             alt="temp"
             className="w-10 h-10 object-cover rounded-full"
           />

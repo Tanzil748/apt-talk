@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import profileBackdrop from "../assets/profileBackdrop.jpg";
-import profileImg from "../assets/profile.jpg";
+import defaultUser from "../assets/defaultUser.svg";
 import UserPost from "../components/UserPost";
 import AuthContext from "../context/AuthContext";
 import { apiRequests } from "../axiosReq";
@@ -49,7 +49,7 @@ const UserProfilePage = () => {
       <div className="bg-white h-52 lg:h-40 p-2 relative">
         {/* profile img */}
         <img
-          src={profileImg}
+          src={defaultUser}
           alt="user profile"
           className="absolute left-1/2 bottom-40 transform lg:transform-none -translate-x-1/2 lg:-translate-x-0 lg:left-2 lg:bottom-2 mx-auto w-52 lg:w-64 h-52 lg:h-64 rounded-full object-cover z-10"
         />
