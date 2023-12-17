@@ -17,17 +17,25 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (input) => {
     // get loggedUser info from backend and set it with 'setLoggedUser'
-    const res = await axios.post("http://localhost:4500/auth/login", input, {
-      withCredentials: true,
-    });
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+      input,
+      {
+        withCredentials: true,
+      }
+    );
     setLoggedUser(res.data);
   };
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:4500/auth/logout", null, {
-        withCredentials: true,
-      });
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/logout`,
+        null,
+        {
+          withCredentials: true,
+        }
+      );
       setLoggedUser(null);
       localStorage.removeItem("loggedUser");
     } catch (error) {

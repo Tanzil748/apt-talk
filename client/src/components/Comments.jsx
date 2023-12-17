@@ -68,15 +68,39 @@ const Comments = ({ postId }) => {
       ) : data.length > 0 ? (
         data.map((comment) => (
           <div className="flex gap-2 mb-2" key={comment.id}>
-            <img
-              src={defaultUser}
-              alt={`${comment.username} comment`}
-              className="w-10 h-10 object-cover rounded-full"
-            />
-            <div>
-              <p className="text-sm font-semibold mb-1">{comment.username}</p>
-              <p className="text-sm text-slate-500">{comment.commentcontent}</p>
-            </div>
+            {comment.commentuserid === loggedUser?.others.id ? (
+              <>
+                <img
+                  src={defaultUser}
+                  alt={`${comment.username} comment`}
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    {comment.username}
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    {comment.commentcontent}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <img
+                  src={profileImg}
+                  alt={`${comment.username} comment`}
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+                <div>
+                  <p className="text-sm font-semibold mb-1">
+                    {comment.username}
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    {comment.commentcontent}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         ))
       ) : (

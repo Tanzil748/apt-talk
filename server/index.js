@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 // CHANGE LATER FOR DEPLOYMENT
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
   })
 );
 app.use(express.json());

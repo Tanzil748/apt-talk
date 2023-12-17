@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import profileImg from "../assets/profile.jpg";
 import defaultUser from "../assets/defaultUser.svg";
 import { AddCircle } from "@mui/icons-material";
-import AuthContext from "../context/AuthContext";
 
 const Stories = () => {
-  const { loggedUser } = useContext(AuthContext);
-  const [clicked, setClicked] = useState(true);
-
   // include profile img & actual story later on
   const fakeStoryData = [
     {
@@ -75,7 +71,6 @@ const Stories = () => {
     },
   ];
 
-  useEffect(() => {}, [clicked]);
   return (
     <div className="bg-white rounded-md h-20 overflow-x-scroll overflow-y-hidden no-scrollbar flex items-center px-2 gap-4 mt-4">
       {/* add story */}

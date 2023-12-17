@@ -3,9 +3,9 @@ const { Pool } = pg;
 import "dotenv/config";
 
 export const pool = new Pool({
-  user: "postgres",
+  user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  host: "localhost",
-  port: "5433",
-  database: "updated_apttalk",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DATABASE,
 });
